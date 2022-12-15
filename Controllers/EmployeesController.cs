@@ -18,6 +18,7 @@ namespace outputcachewithasp.Controllers
         [OutputCache(CacheProfile = "Cache1min")]
         public ActionResult Index()
         {
+            ViewBag.name=db.Employees.Select(e => e.Name).ToList();
             ViewBag.msg=DateTime.Now;
             return View(db.Employees.ToList());
         }

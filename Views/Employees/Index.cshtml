@@ -10,6 +10,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<p>
+    @Html.DropDownList("Name", new SelectList(ViewBag.name))
+<p/>
 <a>
     @Html.ActionLink("Refresh Cache", "refreshcache", "Employees", null, new { @class = "btn btn-danger" })
 </a>
