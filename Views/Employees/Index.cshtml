@@ -16,7 +16,10 @@
 <a>
     @Html.ActionLink("Refresh Cache", "refreshcache", "Employees", null, new { @class = "btn btn-danger" })
 </a>
-<table class="table">
+<a>
+    @Html.ActionLink("Refresh dd Cache", "refreshdd", "Employees", null, new { @class = "btn btn-danger" })
+</a>
+<table class="table" name="tbl">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)

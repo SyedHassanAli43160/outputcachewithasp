@@ -18,8 +18,8 @@ namespace outputcachewithasp.Controllers
         [OutputCache(CacheProfile = "Cache1min")]
         public ActionResult Index()
         {
-            ViewBag.name=db.Employees.Select(e => e.Name).ToList();
             ViewBag.msg=DateTime.Now;
+            dropdowncache();
             return View(db.Employees.ToList());
         }
         public ActionResult refreshcache()
@@ -29,7 +29,21 @@ namespace outputcachewithasp.Controllers
             Response.RemoveOutputCacheItem(url);
             return RedirectToAction("Index");
         }
+        [OutputCache(CacheProfile ="Cache30sec")]
+        public void dropdowncache()
+        {
+            string url = Url.Action("Index", "Employees");
+            ViewBag.name = db.Employees.Select(e => e.Name).ToList();
+           
+        }
+        public ActionResult refreshdd()
+        {
+            string url = Url.Action("dropdowncache", "Employees");
 
+            Response.RemoveOutputCacheItem(url);
+            return RedirectToAction("Index");
+        }
+       
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
         {
